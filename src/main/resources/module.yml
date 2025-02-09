@@ -1,0 +1,5 @@
+name: ConsoleLogs
+version: '${version}'
+required-version: 4.21.1
+author: EquipableMC
+main: site.equipable.consoleLogs.ConsoleLogs

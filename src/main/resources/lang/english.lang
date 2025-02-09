@@ -1,0 +1,10 @@
+version: 1.0
+log levels:
+    all: log all
+    debug: debug log, log debug
+    error: error log, log error
+    fatal: fatal log, log fatal
+    info: info log, log info
+    off: log off, no log
+    trace: log trace, trace log
+    warn: warn log, log warn, warning log, log warning
