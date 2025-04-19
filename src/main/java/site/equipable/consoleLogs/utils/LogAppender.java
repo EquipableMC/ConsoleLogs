@@ -31,7 +31,7 @@ public class LogAppender extends AbstractAppender {
         String formattedMsg = logEvent.getMessage().getFormattedMessage();
         String cleanedLogMsg = COLOR_CODE_PATTERN.matcher(formattedMsg).replaceAll("");
         cleanedLogMsg = HEX_PATTERN.matcher(cleanedLogMsg).replaceAll("");
-        cleanedLogMsg = ANSI_ESCAPE_PATTERN.matcher(cleanedLogMsg).replaceAll("");
+        //cleanedLogMsg = ANSI_ESCAPE_PATTERN.matcher(cleanedLogMsg).replaceAll("");
         cleanedLogMsg = WHITESPACE_PATTERN.matcher(cleanedLogMsg).replaceAll(" ");
         cleanedLogMsg = GRAVE_SYMBOL_REMOVE.matcher(cleanedLogMsg).replaceAll("");
         String loggerName = logEvent.getLoggerName() == null || logEvent.getLoggerName().isEmpty() ? "Server" : logEvent.getLoggerName();
@@ -44,14 +44,13 @@ public class LogAppender extends AbstractAppender {
 
         if (!logMessage.contains("Caching message with id"))
             RateLimitHandler.insertNewLog(logMessage + "\n", logEvent);
-        ConsoleLogs.getInstance().lastLoggedMessage = logMessage;
 
 
     }
 
     private static final Pattern COLOR_CODE_PATTERN = Pattern.compile("[&§][0-9A-FK-ORX]", Pattern.CASE_INSENSITIVE);
     private static final Pattern HEX_PATTERN = Pattern.compile("&x((?:&\\p{XDigit}){6})", Pattern.CASE_INSENSITIVE);
-    private static final Pattern ANSI_ESCAPE_PATTERN = Pattern.compile("\u001B\\[[;\\d]*m", Pattern.CASE_INSENSITIVE);
+    //private static final Pattern ANSI_ESCAPE_PATTERN = Pattern.compile("\u001B\\[[;\\d]*m", Pattern.CASE_INSENSITIVE);
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s+");
     private static final Pattern GRAVE_SYMBOL_REMOVE = Pattern.compile("`");
 }

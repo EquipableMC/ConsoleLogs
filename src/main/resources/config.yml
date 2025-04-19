@@ -1,0 +1,15 @@
+############################################################
+#                                                          #
+#                ConsoleLogs Configuration                 #
+#                                                          #
+############################################################
+
+# ┌────────────────────────────────────────────────────┐
+# │ ANSI Support                                       │
+# │----------------------------------------------------│
+# │ Enable or disable ANSI color codes in console logs.│
+# │ Set to 'true' to enable colorful output.           │
+# │ Set to 'false' for plain text output.              │
+# │ This is enabled by default.                        │
+# └────────────────────────────────────────────────────┘
+ansi-support: true

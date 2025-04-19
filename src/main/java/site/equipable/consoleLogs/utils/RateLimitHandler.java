@@ -12,6 +12,7 @@ public class RateLimitHandler {
     static boolean isPending = false;
     static final int maxTimeBetweenLogs = 5; // seconds
     static ExecutorService executorService = Executors.newSingleThreadExecutor();
+    public static String lastLoggedMessage;
 
     public synchronized static void insertNewLog(String message, LogEvent logEvent) {
         if (message == null || message.isEmpty()) return;
@@ -54,8 +55,10 @@ public class RateLimitHandler {
     }
 
     private synchronized static void handleSend(String message, LogEvent logEvent) {
-        String finalMsg = "```ansi" + message + "```";
+        String finalMsg = "```ansi\n" + message + "```";
         BukkitLogEvent bukkitLogEvent = new BukkitLogEvent(logEvent, finalMsg);
         Bukkit.getPluginManager().callEvent(bukkitLogEvent);
+        lastLoggedMessage = finalMsg;
+
     }
 }

@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'site.equipable'
-version = '1.0.0'
+version = '1.1.0'
 
 java {
     sourceCompatibility = '17'
@@ -31,16 +31,16 @@ repositories {
 
 dependencies {
     shadow 'io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT'
-    shadow 'com.github.SkriptLang:Skript:2.10.1'
+    shadow 'com.github.SkriptLang:Skript:2.11.0'
     // Jetbrains Annotations
     shadow 'org.jetbrains:annotations:23.0.0'
 
     // Commits: com.github.dv8fromtheworld:jda
     // Stable: net.dv8tion:JDA
-    shadow 'net.dv8tion:JDA:5.3.0'
+    shadow 'net.dv8tion:JDA:5.3.2'
 
     //shadow files('DiSky.jar')
-    //shadow 'net.itsthesky:DiSky:4.21.1-SNAPSHOT'
+    //shadow 'net.itsthesky:DiSky:4.22.0-SNAPSHOT'
     shadow 'net.itsthesky:DiSky:4.22.0-SNAPSHOT'
 
     //Apache Log4j
