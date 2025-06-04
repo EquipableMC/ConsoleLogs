@@ -6,10 +6,10 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.Logger;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
 import org.apache.logging.log4j.core.config.Property;
-import site.equipable.consoleLogs.ConsoleLogs;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 
 /**
@@ -27,6 +27,12 @@ public class LogAppender extends AbstractAppender {
 
     @Override
     public void append(LogEvent logEvent) {
+        if (RateLimitHandler.shuttingDown) return;
+
+        if (RateLimitHandler.executorService == null || RateLimitHandler.executorService.isShutdown()) {
+            return;
+        }
+
         String formattedTime = LocalDateTime.now().format(formatter);
         String formattedMsg = logEvent.getMessage().getFormattedMessage();
         String cleanedLogMsg = COLOR_CODE_PATTERN.matcher(formattedMsg).replaceAll("");
